@@ -1,0 +1,28 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "AS A manager I WANT to generate a webpage that displays my team's basic info SO THAT I have quick access to their emails and GitHub profiles",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clarkspencerc/team-profile-generator.git"
+  },
+  "author": "Spencer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clarkspencerc/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/clarkspencerc/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
