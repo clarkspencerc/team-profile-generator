@@ -1,11 +1,13 @@
 const inquirer = require('inquirer');
-const Manager = require('./Manager');
-const Engineer = require('./Engineer'); 
-const Intern = require('./Intern'); 
-
+const fs = require('fs');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer'); 
+const Intern = require('./lib/Intern'); 
+const generatePage = require('./src/page-template'); 
+const team = []; 
 
 function App(){
-    this.team = []; 
+    //this.team = []; 
     this.growteam = true; 
 }
 
@@ -35,7 +37,8 @@ inquirer
         }
     ])
     .then( answers => {
-        this.engineer = new Engineer(answers.name, answers.id, answers.email, answers.github); 
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github); 
+        team.push(engineer); 
         console.log(this.engineer); 
         this.getMenu();
     });
@@ -70,7 +73,8 @@ App.prototype.addIntern = function(){
             }
         ])
         .then( answers => {
-            this.intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+            const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+            team.push(intern); 
             console.log(this.intern); 
             this.getMenu(); 
         })
@@ -78,7 +82,14 @@ App.prototype.addIntern = function(){
 
 App.prototype.buildSite = function(){
     console.log('you are about to build your site');
+    //return generatePage(team); 
+    fs.writeFileSync('./dist/index.html', generatePage(team),"utf-8", err => {
+        if (err) throw err;
+        console.log('an html file should have been created');
+    })
 };
+
+
 
 App.prototype.getMenu = function(){
     inquirer
@@ -139,7 +150,8 @@ App.prototype.buildTeam = function(){
 
     ])
     .then(answers =>{
-        this.manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        team.push(manager);
         console.log(this.manager);
         this.getMenu(); 
     })
@@ -147,3 +159,5 @@ App.prototype.buildTeam = function(){
 }
 
 new App().buildTeam(); 
+
+module.exports = team; 
