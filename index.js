@@ -1,1 +1,1 @@
-const App = require('./lib/Game'); 
+const App = require('./lib/App'); 
