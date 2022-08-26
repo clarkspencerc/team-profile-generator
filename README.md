@@ -1,7 +1,7 @@
 # team-profile-generator
 
 ## Link to Video walkthrough 
-[Link to Video Walkthrough]()
+[Link to Video Walkthrough](https://drive.google.com/file/d/1113O_GvsoDW-WYZtEeEEmHHJgLyQiZBN/view)
 
 
 
